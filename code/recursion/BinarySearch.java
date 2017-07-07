@@ -1,8 +1,8 @@
 package com.suanfa.recursion;
 
 /**
- * 二分查找
- * 遮半查找
+ * 二分查找/遮半查找
+ * 从一个有序的数组中查找某一个特定的元素的搜索算法
  * Created by chang on 17/7/6.
  */
 public class BinarySearch {
