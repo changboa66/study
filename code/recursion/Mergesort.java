@@ -63,7 +63,8 @@ public class Mergesort {
         }
 
         //将排序好的to数组赋值给未排序好的数组,上一层的排序需要用到
-        for (idx = low; idx <= high; idx++) {
+        //from=[3, 2, 4, 1] --> to=[2, 3, 0, 0] --> from=[2, 3, 4, 1]
+	for (idx = low; idx <= high; idx++) {
             from[idx] = to[idx];
         }
 
