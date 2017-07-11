@@ -16,7 +16,8 @@ package com.suanfa.recursion;
  */
 public class Mergesort {
 
-    static void sort(int[] from, int low, int high, int[] to) {
+    //第一步:先递归到只剩下两个元素
+    static void recursion(int[] from, int low, int high, int[] to) {
         if (low>=high) {
             return;
         }
@@ -25,14 +26,15 @@ public class Mergesort {
         // 当递归到low==middle==0时,进入下一次循环会return,
         // 所以此时的low==middle==0; 同理middle+1==high==1;
         // 这时可以看做from[0]和from[1]是已经排好序的, 合并from[0]和from[1]
-        sort(from, low, middle, to);
-        sort(from, middle+1, high, to);
-        merge(from, low, middle, high, to);
+        recursion(from, low, middle, to);
+        recursion(from, middle+1, high, to);
+        mergeSort(from, low, middle, high, to);
     }
 
+    //第二步:合并排序
     //合并前from[low到middle], from[middle+1到high]是已经排好序的
     //合并后from数组和to数组都是已经排好序的
-    static void merge(int[] from, int low, int middle, int high, int[] to) {
+    static void mergeSort(int[] from, int low, int middle, int high, int[] to) {
         //将from分解成两个数组[low----middle]和[middle+1----high]
         //分别重新定义low和high
         int low1 = low;
@@ -46,6 +48,9 @@ public class Mergesort {
         //合并两个已经排好序的数组到to里面
         //两个数组只要有一个的低位超过高位则退出
         //把另一个数组的元素直接加到已经排序好的数组后面(下一个while)
+		//以下可简化为用三木运算符表示:
+		// while (low1<=high1 && low2<=high2)
+		// 		from[low1] < from[low2] ? to[idx++] = from[low1++] : to[idx++] = from[low2++];
         while (low1<=high1 && low2<=high2) {
             if (from[low1]<from[low2]) {
                 to[idx++] = from[low1++];
@@ -74,7 +79,7 @@ public class Mergesort {
     public static void main(String[] args) {
         int[] ints = {4, 3, 2, 1};
         int[] to = new int[4];
-        sort(ints, 0, 3, to);
+        recursion(ints, 0, 3, to);
         System.out.println(ints);
     }
 }
