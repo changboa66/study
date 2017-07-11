@@ -18,6 +18,8 @@ public class Mergesort {
 
     //第一步:先递归到只剩下两个元素
     static void recursion(int[] from, int low, int high, int[] to) {
+	    
+		//递归退出条件(剩下一个元素的时候)
         if (low>=high) {
             return;
         }
@@ -48,9 +50,9 @@ public class Mergesort {
         //合并两个已经排好序的数组到to里面
         //两个数组只要有一个的低位超过高位则退出
         //把另一个数组的元素直接加到已经排序好的数组后面(下一个while)
-		//以下可简化为用三木运算符表示:
-		// while (low1<=high1 && low2<=high2)
-		// 		from[low1] < from[low2] ? to[idx++] = from[low1++] : to[idx++] = from[low2++];
+	//以下可简化为用三木运算符表示:
+	// while (low1<=high1 && low2<=high2)
+	// 	from[low1] < from[low2] ? to[idx++] = from[low1++] : to[idx++] = from[low2++];
         while (low1<=high1 && low2<=high2) {
             if (from[low1]<from[low2]) {
                 to[idx++] = from[low1++];
