@@ -42,7 +42,7 @@ public class KMPSubSearch {
         return -1;
     }
 	
-    //next数组表示j下一次移动到的位置
+    //next数组表示子串p下一次移动到的j的位置
     static int[] next (String p) {
 
         //字符串的长度
