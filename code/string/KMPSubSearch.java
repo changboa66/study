@@ -41,7 +41,8 @@ public class KMPSubSearch {
         }
         return -1;
     }
-
+	
+    //next数组表示j下一次移动到的位置
     static int[] next (String p) {
 
         //字符串的长度
@@ -74,9 +75,5 @@ public class KMPSubSearch {
         return next;
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(kmp("abdcdefabc", "abc"));
-    }
 
 }
