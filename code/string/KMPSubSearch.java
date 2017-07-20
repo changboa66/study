@@ -65,7 +65,10 @@ public class KMPSubSearch {
             if (-1==k || p.charAt(k)==p.charAt(j)) {
                 ++k;
                 ++j;
-                next[j] = k;
+                if (p[++j] == p[++k]) { // 当两个字符相等时要跳过
+                    next[j] = next[k];
+           	} else {
+		 next[j] = k;
             } else {
                 // 最大长度不匹配了所以
                 // 找一个次长串去匹配
