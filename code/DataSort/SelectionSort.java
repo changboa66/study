@@ -16,7 +16,10 @@ public class SelectionSort {
     }
 
     static void selectionSort(int[] ints) {
-        for (int i=0;i<ints.length-1;i++) {
+	//第一趟比较后第0位的元素会确定为最小值
+	//假如数组有2个元素,则需要一趟即可;假如有3个元素则需要比较两趟;
+	//以此类推,比较的趟树为数组长度-1 
+       for (int i=0;i<ints.length-1;i++) {
             //未排序序列中最小数据数组下标
             int minIdx = i;
             //在未排序元素中继续寻找最小元素，并保存其下标
