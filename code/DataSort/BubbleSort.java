@@ -36,7 +36,11 @@ public class BubbleSort {
      * @param j 交换的索引
      */
     private static void swap(int[] ints, int i, int j) {
-        // 异或运算^, 相同为0, 不相同为1
+        //当i等于j时,位运算会出错,所以直接退出即可
+	if (i==j) {
+            return;
+        }
+	// 异或运算^, 相同为0, 不相同为1
         ints[i] = ints[i] ^ ints[j];
         ints[j] = ints[i] ^ ints[j];
         ints[i] = ints[i] ^ ints[j];
