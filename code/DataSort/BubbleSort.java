@@ -36,13 +36,9 @@ public class BubbleSort {
      * @param j 交换的索引
      */
     private static void swap(int[] ints, int i, int j) {
-        //当i等于j时数组的位运算会出错,所以直接退出即可
-	//因为第一次异或运算后,a[i]==a[j]==0,
-	//可以把a[i],a[j]赋值给临时变量x,y解决此问题
-	if (i==j) {
-            return;
-        }
-	// 异或运算^, 相同为0, 不相同为1
+        //当i等于j时,ints[i]^ints[j]==0
+        if (i==j) return;
+        // 异或运算^, 相同为0, 不相同为1
         ints[i] = ints[i] ^ ints[j];
         ints[j] = ints[i] ^ ints[j];
         ints[i] = ints[i] ^ ints[j];
@@ -56,6 +52,8 @@ public class BubbleSort {
      * @param j 交换的索引
      */
     private static void swap1(int[] ints, int i, int j) {
+        //i等于j时,ints[i]==ints[j],第二条语句就会出问题,所以直接退出
+        if (i==j) return;
         ints[i] = ints[i] + ints[j];
         ints[j] = ints[i] - ints[j];
         ints[i] = ints[i] - ints[j];
